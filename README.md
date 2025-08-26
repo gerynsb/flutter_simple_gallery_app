@@ -35,11 +35,11 @@ Project ini dibuat untuk menyelesaikan tugas Dicoding **Belajar Membuat Aplikasi
 ## Tampilan Aplikasi 
 | Login | Home | Favorites |
 |-------|------|-----------|
-| <img src="images/Gambar1.jpg" alt="Login Screen" width="200"/> | <img src="images/Gambar2.JPG" alt="Home Screen" width="200"/> | <img src="images/Gambar3.JPG" alt="Gallery Screen" width="200"/> |
+| <img src="images/login.jpeg" alt="Login Screen" width="200"/> | <img src="images/home.jpeg" alt="Home Screen" width="200"/> | <img src="images/favorites.jpeg" alt="Gallery Screen" width="200"/> |
 
 | Gallery (All) | Gallery (Favorites) | Detail |
 |---------------|---------------------|--------|
-| <img src="images/Gambar4.JPG" alt="Detail Screen" width="200"/> | <img src="images/Gambar5.jpeg" alt="Detail Screen" width="200"/> | <img src="images/Gambar6.jpeg" alt="Detail Screen" width="200"/> |
+| <img src="images/gallery.jpeg" alt="Gallery" width="200"/> | <img src="images/galleryfav.jpeg" alt="Gallery Favorites" width="200"/> | <img src="images/detail.jpeg" alt="Detail Screen" width="200"/> |
 
 ## Konsep Flutter yang Diimplementasikan
 
