@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                   const SizedBox(height: 8.0),
-                  
+
                   // Only show featured banner in Home tab
                   if (_selectedIndex == 0)
                     Container(
@@ -104,6 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 end: Alignment.bottomCenter,
                                 colors: [
                                   Colors.transparent,
+                                  // ignore: deprecated_member_use
                                   Colors.black.withOpacity(0.7),
                                 ],
                               ),
@@ -128,6 +129,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Text(
                                   'Discover our latest additions',
                                   style: TextStyle(
+                                    // ignore: deprecated_member_use
                                     color: Colors.white.withOpacity(0.8),
                                     fontSize: 16.0,
                                   ),
@@ -169,50 +171,56 @@ class _HomeScreenState extends State<HomeScreen> {
             // Grid view of items
             Expanded(
               child: _selectedIndex == 1 && _displayedItems.isEmpty
-                ? Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.favorite_border,
-                          size: 64,
-                          color: Colors.grey[400],
-                        ),
-                        const SizedBox(height: 16),
-                        Text(
-                          'No favorite items yet',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.grey[600],
+                  ? Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.favorite_border,
+                            size: 64,
+                            color: Colors.grey[400],
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 16),
+                          Text(
+                            'No favorite items yet',
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : GridView.builder(
+                      padding: const EdgeInsets.all(8.0),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            childAspectRatio: 0.7,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
+                          ),
+                      itemCount:
+                          _displayedItems.length > 4 && _selectedIndex == 0
+                          ? 4
+                          : _displayedItems.length,
+                      itemBuilder: (context, index) {
+                        final item = _displayedItems[index];
+                        return GalleryItemCard(
+                          item: item,
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              '/detail',
+                              arguments: item,
+                            );
+                          },
+                          onFavoriteToggle: (isFavorite) {
+                            _onItemFavoriteToggle(index, isFavorite);
+                          },
+                        );
+                      },
                     ),
-                  )
-                : GridView.builder(
-                    padding: const EdgeInsets.all(8.0),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 0.7,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                    ),
-                    itemCount: _displayedItems.length > 4 && _selectedIndex == 0 
-                      ? 4 
-                      : _displayedItems.length,
-                    itemBuilder: (context, index) {
-                      final item = _displayedItems[index];
-                  return GalleryItemCard(
-                    item: item,
-                    onTap: () {
-                      Navigator.pushNamed(context, '/detail', arguments: item);
-                    },
-                    onFavoriteToggle: (isFavorite) {
-                      _onItemFavoriteToggle(index, isFavorite);
-                    },
-                  );
-                },
-              ),
             ),
           ],
         ),

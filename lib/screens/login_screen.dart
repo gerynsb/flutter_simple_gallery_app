@@ -33,6 +33,7 @@ class _LoginScreenState extends State<LoginScreen> {
           _isLoading = false;
         });
         // Navigate to home screen
+        // ignore: use_build_context_synchronously
         Navigator.pushReplacementNamed(context, '/home');
       });
     }
